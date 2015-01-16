@@ -1,5 +1,4 @@
 # Account Pay Center
------------------------------------------
 
 * A Account Pay Center with Spring-boot、Hibernate、Jetty、Gradle
 
@@ -14,7 +13,7 @@
 
 * now run success and you can test:
 
-    $ curl http://localhost:8080/hello/
+     $ curl http://localhost:8080/hello/
 
 ## Module
 * Bank
