@@ -1,0 +1,10 @@
+.classpath
+.gradle
+.project
+.settings
+build
+target
+
+.tags*
+tags
+*.swp
