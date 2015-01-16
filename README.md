@@ -11,8 +11,7 @@
 ## Run
      $ java -jar build/libs/app-pay-0.1.0.jar
 
-* now run success and you can test:
-
+* now run success and you can test
      $ curl http://localhost:8080/hello/
 
 ## Module
