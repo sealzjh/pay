@@ -13,14 +13,14 @@ public class PayAccountMoneyModel {
     @Column(name="account_id")
     private int accountId;
 
-    @Column(name="total")
-    private float total;
+    @Column(name="total_price")
+    private float total_price;
     
-    @Column(name="freez_total")
-    private float freezTotal;
+    @Column(name="freez_price")
+    private float freezPrice;
     
-    @Column(name="cash_total")
-    private float cashTotal;
+    @Column(name="extra_price")
+    private float extraPrice;
     
     public int getAccountId() {
 		return accountId;
@@ -30,28 +30,29 @@ public class PayAccountMoneyModel {
 		this.accountId = accountId;
 	}
 
-	public float getTotal() {
-		return total;
+	public float getTotal_price() {
+		return total_price;
 	}
 
-	public void setTotal(float total) {
-		this.total = total;
+	public void setTotal_price(float total_price) {
+		this.total_price = total_price;
 	}
 
-	public float getFreezTotal() {
-		return freezTotal;
+	public float getFreezPrice() {
+		return freezPrice;
 	}
 
-	public void setFreezTotal(float freezTotal) {
-		this.freezTotal = freezTotal;
+	public void setFreezPrice(float freezPrice) {
+		this.freezPrice = freezPrice;
 	}
 
-	public float getCashTotal() {
-		return cashTotal;
+	public float getExtraPrice() {
+		return extraPrice;
 	}
 
-	public void setCashTotal(float cashTotal) {
-		this.cashTotal = cashTotal;
+	public void setExtraPrice(float extraPrice) {
+		this.extraPrice = extraPrice;
 	}
+
 
 }

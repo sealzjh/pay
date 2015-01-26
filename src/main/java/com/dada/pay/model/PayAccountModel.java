@@ -11,27 +11,27 @@ public class PayAccountModel {
 
     @Id
     @Column(name="account_id")
-    private int accountId;
+    private long accountId;
 
     @Column(name="account_name")
     private String accountName;
     
     @Column(name="status")
-    private String status;
+    private int status;
 
-	public String getStatus() {
+	public int getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
+	public void setStatus(int status) {
 		this.status = status;
 	}
 
-	public int getAccountId() {
+	public long getAccountId() {
         return accountId;
     }
 
-    public void setAccountId(int id) {
+    public void setAccountId(long id) {
         this.accountId = id;
     }
 
