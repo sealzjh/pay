@@ -1,5 +1,8 @@
 package com.dada.pay.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,6 +39,13 @@ public class AccountController extends BaseController {
 	public Response remove(long accountId) {
 		_AccountService.deleteAccount(accountId);
 		return success(null);
+	}
+	
+	@RequestMapping("/account/typelist/")
+	public Response listAccountType() {
+		List <Map <String , Object>> list = _AccountService.listAccountType();
+		
+		return success(list);
 	}
   
 }

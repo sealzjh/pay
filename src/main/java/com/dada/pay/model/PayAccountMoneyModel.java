@@ -14,7 +14,7 @@ public class PayAccountMoneyModel {
     private int accountId;
 
     @Column(name="total_price")
-    private float total_price;
+    private float totalPrice;
     
     @Column(name="freez_price")
     private float freezPrice;
@@ -30,12 +30,12 @@ public class PayAccountMoneyModel {
 		this.accountId = accountId;
 	}
 
-	public float getTotal_price() {
-		return total_price;
+	public float getTotalPrice() {
+		return totalPrice;
 	}
 
-	public void setTotal_price(float total_price) {
-		this.total_price = total_price;
+	public void setTotalPrice(float totalPrice) {
+		this.totalPrice = totalPrice;
 	}
 
 	public float getFreezPrice() {
