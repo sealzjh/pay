@@ -11,7 +11,7 @@ public class PayCardModel {
 
     @Id
     @Column(name="card_id")
-    private int cardId;
+    private long cardId;
 
     @Column(name="account_id")
     private int accountId;
@@ -43,11 +43,11 @@ public class PayCardModel {
     @Column(name="is_default")
     private int isDefault;
 
-	public int getCardId() {
+	public long getCardId() {
 		return cardId;
 	}
 
-	public void setCardId(int cardId) {
+	public void setCardId(long cardId) {
 		this.cardId = cardId;
 	}
 

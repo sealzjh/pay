@@ -1,30 +1,65 @@
 package com.dada.pay.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.dada.pay.core.BaseController;
+import com.dada.pay.core.Response;
+import com.dada.pay.service.CardService;
+
+import java.util.List;
+import java.util.Map;
+
 @RestController  
-public class CardController {  
+public class CardController extends BaseController {  
+	
+	@Autowired
+	private CardService _CardService;
   
+	/**
+	 * @param: int accountId
+	 * @param: string accountName
+	 * @param: string accountCard
+	 * @param: int accountTypeId
+	 * @param: int payBankId
+	 * @param: int payCityId
+	 * @param: string payCityName
+	 * @param: int paySubbankId
+	 * @param: string paySubbankName
+	 * 
+	 * */
 	@RequestMapping("/card/add/")  
-    public String add(){  
-        return "card!";  
+    public Response add(int accountId ,String accountName , String accountCard , int accountTypeId,
+    					int payBankId , int payCityId , String payCityName , int paySubbankId , String paySubbankName){
+		
+		_CardService.saveCard(accountId , accountName , accountCard , accountTypeId , payBankId , payCityId , payCityName,
+				paySubbankId , paySubbankName);
+        return success(null);
     }
 	
 	@RequestMapping("/card/remove/")
-	public String remove() {
-		return "remove";
+	public Response remove(long cardId) {
+		_CardService.deleteCard(cardId);
+		return success(null);
 	}
 	
 	@RequestMapping("/card/list/")
-	public String list() {
-		//by account id
-		return "list";
+	public Response list(int accountId) {
+		List <Map <String , Object>> list = _CardService.getAccountCard(accountId);
+		return success(list);
+	}
+	
+	@RequestMapping("/card/default/")
+	public Response getDefault(int accountId) {
+		Map <String , Object> data = _CardService.getDefaultCard(accountId);
+		return success(data);
 	}
 	
 	@RequestMapping("/card/defaultCard/")
-	public String defaultCard() {
-		return "Default";
+	public Response defaultCard(int accountId , long cardId) {
+		_CardService.setDefault(accountId , cardId);
+		return success(null);
 	}
   
 }

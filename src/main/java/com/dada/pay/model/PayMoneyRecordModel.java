@@ -11,9 +11,9 @@ public class PayMoneyRecordModel {
 
     @Id
     @Column(name="id")
-    private int id;
+    private long id;
 
-    @Column(name="account_id")
+	@Column(name="account_id")
     private int accountId;
     
     @Column(name="value")
@@ -22,14 +22,14 @@ public class PayMoneyRecordModel {
     @Column(name="type_id")
     private int typeId;
     
-    @Column(name="create_time")
-    private int createTime;
-
-	public int getId() {
+    @Column(name="order_id")
+    private int orderId;
+    
+	public long getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -56,13 +56,13 @@ public class PayMoneyRecordModel {
 	public void setTypeId(int typeId) {
 		this.typeId = typeId;
 	}
-
-	public int getCreateTime() {
-		return createTime;
+	
+	public int getOrderId() {
+		return orderId;
 	}
 
-	public void setCreateTime(int createTime) {
-		this.createTime = createTime;
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
 	}
 
 
