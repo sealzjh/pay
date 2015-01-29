@@ -32,6 +32,8 @@
 * pay_money_record
 * pay_money_record_type
 
+![image](https://github.com/sealzjh/pay/blob/master/doc/db.png)
+
 ## License
 * Account Pay Center is Open Source software released under the
 [Apache 2.0 license](http://www.apache.org/licenses/LICENSE-2.0.html).
