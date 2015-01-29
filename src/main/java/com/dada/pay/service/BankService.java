@@ -23,13 +23,13 @@ public class BankService extends BaseService{
 	@Autowired
 	private PaySubbankDao _PaySubbankDao;
 	
-	public void saveBank(String bankName) {
+	public int saveBank(String bankName) {
 		PayBankModel pay = new PayBankModel();
 		pay.setBankName(bankName);
-		_bankDao.save(pay);
+		return _bankDao.save(pay);
 	}
 	
-	public String getBankName(long bankId) {
+	public String getBankName(int bankId) {
 		PayBankModel bank = _bankDao.getById(bankId);
 		String bankName = String.valueOf(bank.getBankName());
 		
@@ -51,32 +51,32 @@ public class BankService extends BaseService{
 		return rs;
 	}
 
-	public void updateBank(long bankId , String bankName) {
+	public void updateBank(int bankId , String bankName) {
 		PayBankModel pay = _bankDao.getById(bankId);
 		pay.setBankName(bankName);
 		_bankDao.update(pay);
 	}
 	
-	public void deleteBank(long bankId) {
+	public void deleteBank(int bankId) {
 		PayBankModel pay = _bankDao.getById(bankId);
 		_bankDao.delete(pay);
 	}
 	
-	public void saveSubbank(long bankId , long cityId , String bankName) {
+	public int saveSubbank(int bankId , int cityId , String bankName) {
 		PaySubbankModel pay = new PaySubbankModel();
 		pay.setBankId(bankId);
 		pay.setCityId(cityId);
 		pay.setSubbankName(bankName);
 		
-		_PaySubbankDao.save(pay);
+		return _PaySubbankDao.save(pay);
 	}
 	
-	public void deleteSubbank(long subbankId) {
+	public void deleteSubbank(int subbankId) {
 		PaySubbankModel pay = _PaySubbankDao.getById(subbankId);
 		_PaySubbankDao.delete(pay);
 	}
 	
-	public Map <String , Object> getSubbankDetail(long cityId) {
+	public Map <String , Object> getSubbankDetail(int cityId) {
 		PaySubbankModel subbank = _PaySubbankDao.getById(cityId);
 		Map <String, Object> data=new HashMap<String, Object>();
 		data.put("subbankId" , subbank.getBankId());
@@ -87,7 +87,7 @@ public class BankService extends BaseService{
 		return data;
 	}
 	
-	public List<Map <String , Object>> getSubbankList(long bankId , long cityId) {
+	public List<Map <String , Object>> getSubbankList(int bankId , int cityId) {
 		List <PaySubbankModel> list = (List<PaySubbankModel>) _PaySubbankDao.getList(bankId, cityId);
 		
 		List<Map<String, Object>> rs=new ArrayList<Map <String , Object>>();

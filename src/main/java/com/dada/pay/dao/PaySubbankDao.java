@@ -15,11 +15,11 @@ import com.dada.pay.model.PaySubbankModel;
 @Transactional
 public class PaySubbankDao extends BaseDao {
 
-	public PaySubbankModel getById(long id) {
+	public PaySubbankModel getById(int id) {
 		return (PaySubbankModel) session().get(PaySubbankModel.class, id);
 	}
 	
-	public List<PaySubbankModel> getList(long bankId , long cityId) {
+	public List<PaySubbankModel> getList(int bankId , int cityId) {
 		List<PaySubbankModel> list = session().createCriteria(PaySubbankModel.class)
 											.add( Restrictions.eq("bankId", bankId ) )
 											.add( Restrictions.eq("cityId", cityId ) )
@@ -28,8 +28,9 @@ public class PaySubbankDao extends BaseDao {
 		return list;
 	}
 
-	public void save(PaySubbankModel pay) {
+	public int save(PaySubbankModel pay) {
 		session().save(pay);
+		return pay.getSubbankId();
 	}
 
 	public void delete(PaySubbankModel pay) {

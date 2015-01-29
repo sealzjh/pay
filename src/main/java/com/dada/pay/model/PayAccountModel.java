@@ -2,6 +2,8 @@ package com.dada.pay.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -10,8 +12,9 @@ import javax.persistence.Table;
 public class PayAccountModel {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="account_id")
-    private long accountId;
+    private int accountId;
 
     @Column(name="account_name")
     private String accountName;
@@ -27,11 +30,11 @@ public class PayAccountModel {
 		this.status = status;
 	}
 
-	public long getAccountId() {
+	public int getAccountId() {
         return accountId;
     }
 
-    public void setAccountId(long id) {
+    public void setAccountId(int id) {
         this.accountId = id;
     }
 

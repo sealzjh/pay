@@ -2,6 +2,8 @@ package com.dada.pay.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -10,8 +12,9 @@ import javax.persistence.Table;
 public class PayCardModel {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="card_id")
-    private long cardId;
+    private int cardId;
 
     @Column(name="account_id")
     private int accountId;
@@ -43,11 +46,11 @@ public class PayCardModel {
     @Column(name="is_default")
     private int isDefault;
 
-	public long getCardId() {
+	public int getCardId() {
 		return cardId;
 	}
 
-	public void setCardId(long cardId) {
+	public void setCardId(int cardId) {
 		this.cardId = cardId;
 	}
 

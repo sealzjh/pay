@@ -14,7 +14,7 @@ import com.dada.pay.model.PayCardModel;
 @Transactional
 public class PayCardDao extends BaseDao {
 	
-	public PayCardModel getById(long id) {
+	public PayCardModel getById(int id) {
 		return (PayCardModel) session().get(PayCardModel.class , id);
 	}
 	
@@ -36,8 +36,9 @@ public class PayCardDao extends BaseDao {
 		return list;
 	}
 	
-	public void save(PayCardModel card) {
+	public int save(PayCardModel card) {
 		session().save(card);
+		return card.getCardId();
 	}
 	
 	public void delete(PayCardModel card) {

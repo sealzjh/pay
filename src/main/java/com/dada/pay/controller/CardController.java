@@ -33,13 +33,13 @@ public class CardController extends BaseController {
     public Response add(int accountId ,String accountName , String accountCard , int accountTypeId,
     					int payBankId , int payCityId , String payCityName , int paySubbankId , String paySubbankName){
 		
-		_CardService.saveCard(accountId , accountName , accountCard , accountTypeId , payBankId , payCityId , payCityName,
+		int id = _CardService.saveCard(accountId , accountName , accountCard , accountTypeId , payBankId , payCityId , payCityName,
 				paySubbankId , paySubbankName);
-        return success(null);
+        return success(id);
     }
 	
 	@RequestMapping("/card/remove/")
-	public Response remove(long cardId) {
+	public Response remove(int cardId) {
 		_CardService.deleteCard(cardId);
 		return success(null);
 	}
@@ -57,7 +57,7 @@ public class CardController extends BaseController {
 	}
 	
 	@RequestMapping("/card/defaultCard/")
-	public Response defaultCard(int accountId , long cardId) {
+	public Response defaultCard(int accountId , int cardId) {
 		_CardService.setDefault(accountId , cardId);
 		return success(null);
 	}

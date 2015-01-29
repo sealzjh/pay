@@ -11,12 +11,13 @@ import com.dada.pay.model.PayAccountModel;
 @Transactional
 public class PayAccountDao extends BaseDao {
 	
-	public PayAccountModel getById(long id) {
+	public PayAccountModel getById(int id) {
 		return (PayAccountModel) session().get(PayAccountModel.class, id);
 	}
 	
-	public void save(PayAccountModel pay) {
+	public int save(PayAccountModel pay) {
 		session().save(pay);
+		return pay.getAccountId();
 	}
 
 	public void delete(PayAccountModel pay) {

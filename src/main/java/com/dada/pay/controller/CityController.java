@@ -19,13 +19,13 @@ public class CityController extends BaseController {
 	private CityService _CityService;
   
 	@RequestMapping("/city/list/")  
-    public Response cityList(long provinceId){  
+    public Response cityList(int provinceId){  
 		List <Map <String , Object>> list = _CityService.getCityList(provinceId);
         return success(list);
     }
 	
 	@RequestMapping("/city/detail/")
-	public Response cityDetail(long cityId) {
+	public Response cityDetail(int cityId) {
 		Map <String , Object> data  = _CityService.getCityDetail(cityId);
 		return success(data);
 	}
@@ -38,7 +38,7 @@ public class CityController extends BaseController {
 	}
 	
 	@RequestMapping("/province/detail/")
-	public Response provinceDetail(long provinceId) {
+	public Response provinceDetail(int provinceId) {
 		String provinceName = _CityService.getProvinceName(provinceId);
 		
 		Map <String, Object> data=new HashMap<String, Object>();

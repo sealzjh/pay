@@ -15,11 +15,11 @@ import com.dada.pay.model.PayCityModel;
 @Transactional
 public class PayCityDao extends BaseDao {
 	
-	public PayCityModel getById(long id) {
+	public PayCityModel getById(int id) {
 		return (PayCityModel) session().get(PayCityModel.class, id);
 	}
 	
-	public List<PayCityModel> getList(long provinceId) {
+	public List<PayCityModel> getList(int provinceId) {
 		List<PayCityModel> list = session().createCriteria(PayCityModel.class)
 											.add( Restrictions.eq("provinceId", provinceId ) )
 											.addOrder( Order.asc("cityId") )

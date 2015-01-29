@@ -2,6 +2,8 @@ package com.dada.pay.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -10,8 +12,9 @@ import javax.persistence.Table;
 public class PayMoneyRecordModel {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name="id")
-    private long id;
+    private int id;
 
 	@Column(name="account_id")
     private int accountId;
@@ -28,11 +31,11 @@ public class PayMoneyRecordModel {
 	@Column(name="order_id")
     private int orderId;
     
-	public long getId() {
+	public int getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 

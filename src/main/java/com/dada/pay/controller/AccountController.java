@@ -18,8 +18,10 @@ public class AccountController extends BaseController {
 	private AccountService _AccountService;
   
 	@RequestMapping("/account/detail/")  
-    public String detail(){  
-        return "account!";  
+    public Response detail(int accountId){  
+		
+		Map <String , Object> list = _AccountService.getAccountDetail(accountId);
+        return success(list);
     }
 	
 	/**
@@ -28,15 +30,15 @@ public class AccountController extends BaseController {
 	 * */
 	@RequestMapping("/account/add/")
 	public Response add(String accountName) {
-		_AccountService.saveAccount(accountName);
-		return success(null);
+		int id = _AccountService.saveAccount(accountName);
+		return success(id);
 	}
 
 	/**
 	 * @param: int accountName
 	 * */
 	@RequestMapping("/account/remove/")
-	public Response remove(long accountId) {
+	public Response remove(int accountId) {
 		_AccountService.deleteAccount(accountId);
 		return success(null);
 	}

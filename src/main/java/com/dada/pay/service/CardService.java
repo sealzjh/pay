@@ -18,7 +18,7 @@ public class CardService extends BaseService{
 	@Autowired
 	private PayCardDao _PayCardDao;
 	
-	public void saveCard(int accountId ,String accountName , String accountCard , int accountTypeId,
+	public int saveCard(int accountId ,String accountName , String accountCard , int accountTypeId,
     					int payBankId , int payCityId , String payCityName , int paySubbankId , String paySubbankName) {
 		
 		PayCardModel card = new PayCardModel();
@@ -32,15 +32,15 @@ public class CardService extends BaseService{
 		card.setPaySubbankId(paySubbankId);
 		card.setPaySubbankName(paySubbankName);
 		
-		_PayCardDao.save(card);
+		return _PayCardDao.save(card);
 	}
 	
-	public void deleteCard(long cardId) {
+	public void deleteCard(int cardId) {
 		PayCardModel card = _PayCardDao.getById(cardId);
 		_PayCardDao.delete(card);
 	}
 	
-	public void setDefault(int accountId , long cardId) {
+	public void setDefault(int accountId , int cardId) {
 		List <PayCardModel> list = (List<PayCardModel>) _PayCardDao.getDefaultCard(accountId);
 		for(PayCardModel item:list) {
 			item.setIsDefault(0);

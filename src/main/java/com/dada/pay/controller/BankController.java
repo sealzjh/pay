@@ -28,25 +28,25 @@ public class BankController extends BaseController {
 	@RequestMapping("/bank/add/")
 	public Response add(String bankName) {
 		
-		_BankService.saveBank(bankName);
-		return success(null);
+		int id = _BankService.saveBank(bankName);
+		return success(id);
 	}
 	
 	@RequestMapping("/bank/remove/")
-	public Response remove(long bankId) {
+	public Response remove(int bankId) {
 		_BankService.deleteBank(bankId);
 		return success(null);
 	}
 	
 	@RequestMapping("/bank/update/")
-	public Response update(long bankId , String bankName) {
+	public Response update(int bankId , String bankName) {
 		
 		_BankService.updateBank(bankId , bankName);
 		return success(null);
 	}
 	
 	@RequestMapping("/bank/detail/")
-	public Response detail(long bankId) {
+	public Response detail(int bankId) {
 		
 		String bankName = _BankService.getBankName(bankId);
 		

@@ -38,14 +38,14 @@ public class CityService extends BaseService{
 		return rs;
 	}
 	
-	public String getProvinceName(long provinceId) {
+	public String getProvinceName(int provinceId) {
 		PayProvinceModel province = _PayProvinceDao.getById(provinceId);
 		String ProvinceName = String.valueOf(province.getProvinceName());
 		
 		return ProvinceName;
 	}
 	
-	public List<Map <String , Object>> getCityList(long provinceId) {
+	public List<Map <String , Object>> getCityList(int provinceId) {
 		List <PayCityModel> list = (List<PayCityModel>) _PayCityDao.getList(provinceId);
 		
 		List<Map<String, Object>> rs=new ArrayList<Map <String , Object>>();
@@ -62,7 +62,7 @@ public class CityService extends BaseService{
 		return rs;
 	}
 	
-	public Map <String , Object> getCityDetail(long cityId) {
+	public Map <String , Object> getCityDetail(int cityId) {
 		PayCityModel city = _PayCityDao.getById(cityId);
 		Map <String, Object> data=new HashMap<String, Object>();
 		data.put("cityId", city.getCityId());

@@ -12,7 +12,7 @@ import com.dada.pay.model.PayBankModel;
 @Transactional
 public class PayBankDao extends BaseDao {
 
-	public PayBankModel getById(long id) {
+	public PayBankModel getById(int id) {
 		return (PayBankModel) session().get(PayBankModel.class, id);
 	}
 	
@@ -23,8 +23,9 @@ public class PayBankDao extends BaseDao {
 		return list;
 	}
 
-	public void save(PayBankModel pay) {
+	public int save(PayBankModel pay) {
 		session().save(pay);
+		return pay.getBankId();
 	}
 
 	public void delete(PayBankModel pay) {

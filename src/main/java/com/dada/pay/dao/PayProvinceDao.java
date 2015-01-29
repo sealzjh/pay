@@ -12,7 +12,7 @@ import com.dada.pay.model.PayProvinceModel;
 @Repository
 @Transactional
 public class PayProvinceDao extends BaseDao {
-	public PayProvinceModel getById(long id) {
+	public PayProvinceModel getById(int id) {
 		return (PayProvinceModel) session().get(PayProvinceModel.class, id);
 	}
 	
