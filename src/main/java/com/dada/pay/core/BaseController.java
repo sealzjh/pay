@@ -8,8 +8,8 @@ public abstract class BaseController {
 		return Response.success(data);
 	}
 	
-	public Response fail(String msg) {
-		return Response.fail(msg);
+	public Response fail(int status,String msg) {
+		return Response.fail(status , msg);
 	}
 
 }

@@ -27,34 +27,48 @@ public class BankController extends BaseController {
 	
 	@RequestMapping("/bank/add/")
 	public Response add(String bankName) {
-		
-		int id = _BankService.saveBank(bankName);
-		return success(id);
+		try{
+			int id = _BankService.saveBank(bankName);
+			return success(id);
+		} catch(Exception e) {
+			return fail(1 , "Fail");
+		}
 	}
 	
 	@RequestMapping("/bank/remove/")
 	public Response remove(int bankId) {
-		_BankService.deleteBank(bankId);
-		return success(null);
+		try{
+			_BankService.deleteBank(bankId);
+			return success(null);
+		} catch(Exception e) {
+			return fail(1 , "Fail");
+		}
 	}
 	
 	@RequestMapping("/bank/update/")
 	public Response update(int bankId , String bankName) {
-		
-		_BankService.updateBank(bankId , bankName);
-		return success(null);
+		try{
+			_BankService.updateBank(bankId , bankName);
+			return success(null);
+		} catch(Exception e) {
+			return fail(1 , "Fail");
+		}
 	}
 	
 	@RequestMapping("/bank/detail/")
 	public Response detail(int bankId) {
+		try{
+			String bankName = _BankService.getBankName(bankId);
 		
-		String bankName = _BankService.getBankName(bankId);
+			Map <String, Object> data=new HashMap<String, Object>();
+			data.put("bankId", bankId);
+			data.put("bankName", bankName);
 		
-		Map <String, Object> data=new HashMap<String, Object>();
-		data.put("bankId", bankId);
-		data.put("bankName", bankName);
+			return success(data);
 		
-		return success(data);
+		} catch(Exception e) {
+			return fail(1,"Fail");
+		}
 	}
 	  
 }

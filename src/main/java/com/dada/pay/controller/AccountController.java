@@ -19,9 +19,12 @@ public class AccountController extends BaseController {
   
 	@RequestMapping("/account/detail/")  
     public Response detail(int accountId){  
-		
-		Map <String , Object> list = _AccountService.getAccountDetail(accountId);
-        return success(list);
+		try{
+			Map <String , Object> list = _AccountService.getAccountDetail(accountId);
+        	return success(list);
+		} catch(Exception e) {
+			return fail(1 , "Fail");
+		}
     }
 	
 	/**
@@ -30,8 +33,12 @@ public class AccountController extends BaseController {
 	 * */
 	@RequestMapping("/account/add/")
 	public Response add(String accountName) {
-		int id = _AccountService.saveAccount(accountName);
-		return success(id);
+		try{
+			int id = _AccountService.saveAccount(accountName);
+			return success(id);
+		} catch(Exception e) {
+			return fail(1 , "Fail");
+		}
 	}
 
 	/**
@@ -39,8 +46,12 @@ public class AccountController extends BaseController {
 	 * */
 	@RequestMapping("/account/remove/")
 	public Response remove(int accountId) {
-		_AccountService.deleteAccount(accountId);
-		return success(null);
+		try{
+			_AccountService.deleteAccount(accountId);
+			return success(null);
+		} catch(Exception e) {
+			return fail(1 , "Fail");
+		}
 	}
 	
 	@RequestMapping("/account/typelist/")

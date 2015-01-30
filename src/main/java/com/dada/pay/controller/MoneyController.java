@@ -24,14 +24,22 @@ public class MoneyController extends BaseController {
 	 * */
 	@RequestMapping("/money/up/")  
     public Response moneyUp(int accountId , int orderId , int typeId , float price){  
-		_MoneyService.moneyUp(accountId, orderId, typeId, price);
-        return success(null);  
+		try{
+			_MoneyService.moneyUp(accountId, orderId, typeId, price);
+			return success(null);  
+		} catch(Exception e) {
+			return fail(1 , "Fail");
+		}
     }
 	
 	@RequestMapping("/money/down/")
-	public Response moneyDown(int accountId , int orderId , int typeId , float price){  
-		_MoneyService.moneyDown(accountId, orderId, typeId, price);
-        return success(null);  
+	public Response moneyDown(int accountId , int orderId , int typeId , float price){
+		try{
+			_MoneyService.moneyDown(accountId, orderId, typeId, price);
+			return success(null);  
+		} catch(Exception e) {
+			return fail(1 , "Fail");
+		}
 	}
 	
 	@RequestMapping("/money/record/")

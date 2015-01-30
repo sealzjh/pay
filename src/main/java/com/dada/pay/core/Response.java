@@ -16,8 +16,8 @@ public class Response {
 		return new Response(0, null, data);
 	}
 	
-	public static Response fail(String msg){
-		return new Response(1, msg, null);
+	public static Response fail(int status,String msg){
+		return new Response(status, msg, null);
 	}
 	
 	public Integer getStatus() {

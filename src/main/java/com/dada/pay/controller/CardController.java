@@ -32,34 +32,53 @@ public class CardController extends BaseController {
 	@RequestMapping("/card/add/")  
     public Response add(int accountId ,String accountName , String accountCard , int accountTypeId,
     					int payBankId , int payCityId , String payCityName , int paySubbankId , String paySubbankName){
-		
-		int id = _CardService.saveCard(accountId , accountName , accountCard , accountTypeId , payBankId , payCityId , payCityName,
+		try{
+			int id = _CardService.saveCard(accountId , accountName , accountCard , accountTypeId , payBankId , payCityId , payCityName,
 				paySubbankId , paySubbankName);
-        return success(id);
+			return success(id);
+		} catch(Exception e) {
+			return fail(1 , "Fail");
+		}
     }
 	
 	@RequestMapping("/card/remove/")
 	public Response remove(int cardId) {
-		_CardService.deleteCard(cardId);
-		return success(null);
+		try{
+			_CardService.deleteCard(cardId);
+			return success(null);
+		} catch(Exception e) {
+			return fail(1 , "Fail");
+		}
 	}
 	
 	@RequestMapping("/card/list/")
 	public Response list(int accountId) {
-		List <Map <String , Object>> list = _CardService.getAccountCard(accountId);
-		return success(list);
+		try {
+			List <Map <String , Object>> list = _CardService.getAccountCard(accountId);
+			return success(list);
+		} catch(Exception e) {
+			return fail(1 , "Fail");
+		}
 	}
 	
 	@RequestMapping("/card/default/")
 	public Response getDefault(int accountId) {
-		Map <String , Object> data = _CardService.getDefaultCard(accountId);
-		return success(data);
+		try {
+			Map <String , Object> data = _CardService.getDefaultCard(accountId);
+			return success(data);
+		} catch(Exception e) {
+			return fail(1 , "Fail");
+		}
 	}
 	
 	@RequestMapping("/card/defaultCard/")
 	public Response defaultCard(int accountId , int cardId) {
-		_CardService.setDefault(accountId , cardId);
-		return success(null);
+		try {
+			_CardService.setDefault(accountId , cardId);
+			return success(null);
+		} catch(Exception e) {
+			return fail(1 , "Fail");
+		}
 	}
   
 }

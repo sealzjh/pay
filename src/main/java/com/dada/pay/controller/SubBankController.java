@@ -26,22 +26,33 @@ class SubBankController extends BaseController {
 	
 	@RequestMapping("/subbank/add/")
 	public Response add(int bankId , int cityId , String bankName) {
-		
-		int id = _BankService.saveSubbank(bankId , cityId , bankName);
-		return success(id);
+		try{
+			int id = _BankService.saveSubbank(bankId , cityId , bankName);
+			return success(id);
+		} catch(Exception e) {
+			return fail(1 , "Fail");
+		}
 	}
 	
 	@RequestMapping("/subbank/remove/")
 	public Response remove(int subbankId) {
 		
-		_BankService.deleteSubbank(subbankId);
-		return success(null);
+		try{
+			_BankService.deleteSubbank(subbankId);
+			return success(null);
+		} catch(Exception e) {
+			return fail(1 , "Fail");
+		}
 	}
 	
 	@RequestMapping("/subbank/detail/")
 	public Response detail(int subbankId) {
-		Map <String , Object> data  = _BankService.getSubbankDetail(subbankId);
-		return success(data);
+		try {
+			Map <String , Object> data  = _BankService.getSubbankDetail(subbankId);
+			return success(data);
+		} catch(Exception e) {
+			return fail(1 , "Fail");
+		}
 	}
 	
 }

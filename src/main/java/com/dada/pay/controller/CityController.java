@@ -26,8 +26,12 @@ public class CityController extends BaseController {
 	
 	@RequestMapping("/city/detail/")
 	public Response cityDetail(int cityId) {
-		Map <String , Object> data  = _CityService.getCityDetail(cityId);
-		return success(data);
+		try{
+			Map <String , Object> data  = _CityService.getCityDetail(cityId);
+			return success(data);
+		} catch(Exception e) {
+			return fail(1 , "Fail");
+		}
 	}
 	
 	@RequestMapping("/province/list/")
@@ -39,13 +43,17 @@ public class CityController extends BaseController {
 	
 	@RequestMapping("/province/detail/")
 	public Response provinceDetail(int provinceId) {
-		String provinceName = _CityService.getProvinceName(provinceId);
+		try{
+			String provinceName = _CityService.getProvinceName(provinceId);
 		
-		Map <String, Object> data=new HashMap<String, Object>();
-		data.put("provinceId", provinceId);
-		data.put("provinceName", provinceName);
+			Map <String, Object> data=new HashMap<String, Object>();
+			data.put("provinceId", provinceId);
+			data.put("provinceName", provinceName);
 		
-		return success(data);
+			return success(data);
+		} catch(Exception e) {
+			return fail(1 , "Fail");
+		}
 	}
   
 }
